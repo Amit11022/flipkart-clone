@@ -31,7 +31,12 @@ function OrderHistory() {
                 // Get mock orders from localStorage
                 let mockOrders = [];
                 try {
-                    mockOrders = JSON.parse(localStorage.getItem("mock_orders") || "[]");
+                    const storedUser = localStorage.getItem("user");
+                    const userObj = storedUser ? JSON.parse(storedUser) : null;
+                    const userId = userObj?._id || "guest";
+                    const mockOrdersKey = `mock_orders_${userId}`;
+
+                    mockOrders = JSON.parse(localStorage.getItem(mockOrdersKey) || "[]");
                 } catch (e) {
                     console.error(e);
                 }
@@ -42,7 +47,12 @@ function OrderHistory() {
                 // Load mock orders from localStorage or default static mock data
                 let mockOrders = [];
                 try {
-                    mockOrders = JSON.parse(localStorage.getItem("mock_orders") || "[]");
+                    const storedUser = localStorage.getItem("user");
+                    const userObj = storedUser ? JSON.parse(storedUser) : null;
+                    const userId = userObj?._id || "guest";
+                    const mockOrdersKey = `mock_orders_${userId}`;
+
+                    mockOrders = JSON.parse(localStorage.getItem(mockOrdersKey) || "[]");
                 } catch (e) {
                     console.error(e);
                 }

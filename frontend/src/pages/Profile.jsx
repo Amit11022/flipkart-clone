@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { logoutUser } from "../services/authService";
 
 
 function Profile() {
@@ -35,8 +36,7 @@ function Profile() {
 
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        logoutUser();
         navigate("/login");
     };
 

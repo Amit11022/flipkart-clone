@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { logoutUser } from "../services/authService";
 
 
 function Navbar() {
@@ -55,8 +56,7 @@ function Navbar() {
     // ========================================
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        logoutUser();
         setUser(null);
         navigate("/login");
     };

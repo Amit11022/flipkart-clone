@@ -235,8 +235,13 @@ function Checkout() {
 
                 // Save to localStorage mock orders list
                 try {
-                    const existingMock = JSON.parse(localStorage.getItem("mock_orders") || "[]");
-                    localStorage.setItem("mock_orders", JSON.stringify([orderData, ...existingMock]));
+                    const storedUser = localStorage.getItem("user");
+                    const userObj = storedUser ? JSON.parse(storedUser) : null;
+                    const userId = userObj?._id || "guest";
+                    const mockOrdersKey = `mock_orders_${userId}`;
+
+                    const existingMock = JSON.parse(localStorage.getItem(mockOrdersKey) || "[]");
+                    localStorage.setItem(mockOrdersKey, JSON.stringify([orderData, ...existingMock]));
                 } catch (lsErr) {
                     console.error("Failed to save mock order to localStorage:", lsErr);
                 }

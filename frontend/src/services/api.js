@@ -82,13 +82,19 @@ api.interceptors.response.use(
             error.response &&
             error.response.status === 401
         ) {
-
+            try {
+                const storedUser = localStorage.getItem("user");
+                const userObj = storedUser ? JSON.parse(storedUser) : null;
+                if (userObj && userObj._id) {
+                    localStorage.removeItem(`mock_orders_${userObj._id}`);
+                }
+            } catch (e) {
+                console.error(e);
+            }
             localStorage.removeItem("token");
-
             localStorage.removeItem("user");
-
+            localStorage.removeItem("mock_orders");
         }
-
 
         return Promise.reject(error);
 

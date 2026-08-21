@@ -114,31 +114,25 @@ const orderSchema = new mongoose.Schema(
 );
 
 // Auto-generate order number before saving
-orderSchema.pre("save", async function (next) {
-    try {
-        if (!this.orderNumber) {
-            const count = await this.constructor.countDocuments();
-            const year = new Date().getFullYear();
-            this.orderNumber = `FK-${year}-${String(count + 1).padStart(6, "0")}`;
-        }
+orderSchema.pre("save", async function () {
+    if (!this.orderNumber) {
+        const count = await this.constructor.countDocuments();
+        const year = new Date().getFullYear();
+        this.orderNumber = `FK-${year}-${String(count + 1).padStart(6, "0")}`;
+    }
 
-        // Set estimated delivery: COD = 5-7 days, others = 3-5 days
-        if (!this.estimatedDelivery) {
-            const days = this.paymentMethod === "COD" ? 7 : 5;
-            const delivery = new Date();
-            delivery.setDate(delivery.getDate() + days);
-            this.estimatedDelivery = delivery;
-        }
+    // Set estimated delivery: COD = 5-7 days, others = 3-5 days
+    if (!this.estimatedDelivery) {
+        const days = this.paymentMethod === "COD" ? 7 : 5;
+        const delivery = new Date();
+        delivery.setDate(delivery.getDate() + days);
+        this.estimatedDelivery = delivery;
+    }
 
-        // COD orders are not paid upfront
-        if (this.paymentMethod !== "COD") {
-            this.isPaid = true;
-            this.paidAt = new Date();
-        }
-
-        next();
-    } catch (err) {
-        next(err);
+    // COD orders are not paid upfront
+    if (this.paymentMethod !== "COD") {
+        this.isPaid = true;
+        this.paidAt = new Date();
     }
 });
 

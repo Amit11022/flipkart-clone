@@ -7,10 +7,9 @@ const fs = require("fs");
 // CREATE UPLOAD DIRECTORY
 // ========================================
 
-const uploadDirectory = path.join(
-    __dirname,
-    "../uploads/products"
-);
+const uploadDirectory = process.env.VERCEL
+    ? "/tmp/uploads/products"
+    : path.join(__dirname, "../uploads/products");
 
 
 if (!fs.existsSync(uploadDirectory)) {

@@ -32,10 +32,11 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/products", productRoutes);
 
-app.use("/uploads", express.static(
-    path.join(__dirname, "uploads")
-)
-);
+const uploadsPath = process.env.VERCEL
+    ? "/tmp/uploads"
+    : path.join(__dirname, "uploads");
+
+app.use("/uploads", express.static(uploadsPath));
 
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);

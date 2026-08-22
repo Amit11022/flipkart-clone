@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { addToCart } from "../services/cartService";
 import { toast } from "./Toast";
+import { API_BASE_URL } from "../services/api";
 
 
 // ========================================
@@ -21,7 +22,7 @@ function ProductCard({ product }) {
 
     const imageUrl =
         product.images && product.images.length > 0
-            ? `http://localhost:5000${product.images[0]}`
+            ? `${API_BASE_URL}${product.images[0]}`
             : "https://placehold.co/250x250?text=No+Image";
 
 

@@ -5,10 +5,12 @@ import axios from "axios";
 // AXIOS API INSTANCE
 // ========================================
 
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
 const api = axios.create({
 
     // Backend API base URL
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: import.meta.env.VITE_API_URL || `${API_BASE_URL}/api`,
 
     // Request timeout
     timeout: 10000

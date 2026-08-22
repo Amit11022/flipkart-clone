@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { getProductById } from "../services/productService";
 import { addToCart } from "../services/cartService";
 import { toast } from "../components/Toast";
+import { API_BASE_URL } from "../services/api";
 
 
 // ========================================
@@ -421,7 +422,7 @@ function ProductDetails() {
         product.images &&
         product.images.length > 0
 
-            ? `http://localhost:5000${product.images[0]}`
+            ? `${API_BASE_URL}${product.images[0]}`
 
             : "https://via.placeholder.com/500";
 

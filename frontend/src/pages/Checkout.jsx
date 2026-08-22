@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { getCart } from "../services/cartService";
 import { placeOrder } from "../services/orderService";
 import { toast } from "../components/Toast";
+import { API_BASE_URL } from "../services/api";
 
 
 // ========================================
@@ -611,7 +612,7 @@ function Checkout() {
                                     const product = item.product;
                                     const price   = product.discountPrice || product.price;
                                     const image   = product.images?.length > 0
-                                        ? `http://localhost:5000${product.images[0]}`
+                                        ? `${API_BASE_URL}${product.images[0]}`
                                         : "https://via.placeholder.com/100";
 
                                     return (

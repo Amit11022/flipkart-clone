@@ -9,6 +9,7 @@ import {
     removeFromCart,
     clearCart
 } from "../services/cartService";
+import { API_BASE_URL } from "../services/api";
 
 
 function Cart() {
@@ -177,7 +178,7 @@ function Cart() {
                                 const product = item.product;
                                 const price   = product.discountPrice || product.price;
                                 const image   = product.images?.length > 0
-                                    ? `http://localhost:5000${product.images[0]}`
+                                    ? `${API_BASE_URL}${product.images[0]}`
                                     : "https://placehold.co/150x150?text=No+Image";
 
 

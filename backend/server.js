@@ -38,6 +38,8 @@ const uploadsPath = process.env.VERCEL
 
 app.use("/uploads", express.static(uploadsPath));
 
+app.use("/static", express.static(path.join(__dirname, "static")));
+
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 

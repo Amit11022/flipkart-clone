@@ -44,7 +44,7 @@ const seedData = async () => {
                 stock: 25,
                 rating: 4.8,
                 numReviews: 1204,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=iPhone+15+Pro"],
+                images: ["/static/products/iphone15.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -57,7 +57,7 @@ const seedData = async () => {
                 stock: 18,
                 rating: 4.7,
                 numReviews: 890,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Galaxy+S24+Ultra"],
+                images: ["/static/products/s24ultra.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -70,7 +70,7 @@ const seedData = async () => {
                 stock: 45,
                 rating: 4.6,
                 numReviews: 2450,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Sony+WH-1000XM5"],
+                images: ["/static/products/sonyheadphones.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -83,7 +83,7 @@ const seedData = async () => {
                 stock: 15,
                 rating: 4.9,
                 numReviews: 432,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=MacBook+Pro+M3"],
+                images: ["/static/products/macbookpro.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -96,7 +96,7 @@ const seedData = async () => {
                 stock: 60,
                 rating: 4.4,
                 numReviews: 312,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Nike+Air+Max"],
+                images: ["/static/products/nikesneakers.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -109,7 +109,7 @@ const seedData = async () => {
                 stock: 30,
                 rating: 4.5,
                 numReviews: 1205,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Philips+Air+Fryer"],
+                images: ["/static/products/philipsairfryer.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -122,7 +122,7 @@ const seedData = async () => {
                 stock: 120,
                 rating: 4.2,
                 numReviews: 765,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Levis+Slim+Jeans"],
+                images: ["/static/products/levisjeans.jpg"],
                 seller: sellerUser._id
             },
             {
@@ -135,7 +135,7 @@ const seedData = async () => {
                 stock: 12,
                 rating: 4.8,
                 numReviews: 180,
-                images: ["https://placehold.co/400x400/ECEFF1/37474F?text=Dyson+V15"],
+                images: ["/static/products/dysonvacuum.jpg"],
                 seller: sellerUser._id
             }
         ];

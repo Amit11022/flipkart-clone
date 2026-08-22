@@ -30,7 +30,9 @@ const {
 
     deleteProduct,
 
-    seedProducts
+    seedProducts,
+
+    testConnection
 
 } = require("../controllers/productController");
 
@@ -63,6 +65,12 @@ router.get(
 router.get(
     "/seed",
     seedProducts
+);
+
+// Test database connection
+router.get(
+    "/test-connection",
+    testConnection
 );
 
 // Get single product

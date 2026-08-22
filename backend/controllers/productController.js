@@ -691,6 +691,42 @@ const seedProducts = async (req, res) => {
     }
 };
 
+const testConnection = async (req, res) => {
+    try {
+        const mongoose = require("mongoose");
+        if (!process.env.MONGO_URI) {
+            return res.status(200).json({
+                success: false,
+                message: "MONGO_URI environment variable is missing entirely!"
+            });
+        }
+        
+        // Disconnect first to ensure a clean test connection
+        await mongoose.disconnect();
+        
+        // Test connection with a short 5-second timeout
+        console.log("Testing connection to database...");
+        await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 5000
+        });
+        
+        res.status(200).json({
+            success: true,
+            message: "Successfully connected to MongoDB Atlas from Vercel!",
+            readyState: mongoose.connection.readyState
+        });
+    } catch (error) {
+        res.status(200).json({
+            success: false,
+            message: "Failed to connect to MongoDB Atlas from Vercel",
+            errorName: error.name,
+            errorMessage: error.message,
+            errorCode: error.code,
+            errorStack: error.stack
+        });
+    }
+};
+
 // ========================================
 // EXPORT
 // ========================================
@@ -707,5 +743,7 @@ module.exports = {
 
     deleteProduct,
 
-    seedProducts
+    seedProducts,
+
+    testConnection
 };

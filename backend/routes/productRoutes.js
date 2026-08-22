@@ -28,7 +28,9 @@ const {
 
     updateProduct,
 
-    deleteProduct
+    deleteProduct,
+
+    seedProducts
 
 } = require("../controllers/productController");
 
@@ -56,6 +58,12 @@ router.get(
     getProducts
 );
 
+
+// Seed products
+router.get(
+    "/seed",
+    seedProducts
+);
 
 // Get single product
 
